@@ -12,6 +12,11 @@
     - name: Create a Tomcat Group
       group:
         name: tomcat
+
+    - name: Install OpenJDK
+      package:
+        name: java-11-openjdk
+        state: present      
  
     - name: Create a Tomcat Directory
       file:
