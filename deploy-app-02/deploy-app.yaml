@@ -1,0 +1,21 @@
+---
+- name: Build and Deploy Java Web Application with Maven to Tomcat
+  hosts: webservers
+  become: true  # Run tasks with sudo (if needed)
+
+  tasks:
+    - name: Build the Web Application with Maven
+      command: mvn clean package
+      args:
+        chdir: /home/devops/pipelines/course3_proj/src/main/java/com/mycompany/app
+
+    - name: Copy the Generated .war file to Tomcat Webapps Directory
+      copy:
+        src: /home/devops/pipelines/course3_proj/src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
+        dest: /u01/tomcat/webapps/
+
+    - name: Restart Tomcat
+      service:
+        name: tomcat
+        state: restarted
+
