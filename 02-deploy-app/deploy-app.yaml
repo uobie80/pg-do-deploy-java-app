@@ -1,6 +1,7 @@
 ---
 - name: Build and Deploy Java Web Application with Maven to Tomcat
   hosts: webservers
+  remote_user: devops
   become: true  # Run tasks with sudo (if needed)
 
   tasks:
