@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     ansiblePlaybook(
-                        playbook: './01-install-tomcat/install-tomcat.yml'
+                        playbook: './01-install-tomcat/install-tomcat.yaml'
                     )
                 }
             }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     ansiblePlaybook(
-                        playbook: './02-deploy-app/deploy-app.yml'
+                        playbook: './02-deploy-app/deploy-app.yaml'
                     )
                 }
             }
