@@ -5,14 +5,22 @@
   become: true  # Run tasks with sudo (if needed)
 
   tasks:
-    - name: Build the Web Application with Maven
-      command: mvn clean package
+    # - name: Build the Web Application with Maven
+    #  command: mvn clean package
+    #  args:
+    #    chdir: /var/lib/jenkins/workspace
+   
+    - name: Change to the desired directory
+      ansible.builtin.command: "cd /var/lib/jenkins/workspace/01-deploy-java-app"
       args:
-        chdir: /var/lib/jenkins/workspace
+        chdir: "src/main/java/com/mycompany/app"
+
+    - name: Run your command (e.g., Maven)
+      ansible.builtin.command: "mvn clean package"
 
     - name: Copy the Generated .war file to Tomcat Webapps Directory
       copy:
-        src: 01-deploy-java-app/src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
+        src:  "src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war"
         dest: /u01/tomcat/webapps/
 
     - name: Restart Tomcat
