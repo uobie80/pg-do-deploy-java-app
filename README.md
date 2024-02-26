@@ -50,4 +50,4 @@ The focus is on integrating Ansible with the Jenkins CI server, enabling XYZ Ltd
 
 
 ## License
-   - This project is licensed under the MIT License. Feel free to modify and distribute it according to your needs.
+   - This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to modify and distribute it according to your needs.
