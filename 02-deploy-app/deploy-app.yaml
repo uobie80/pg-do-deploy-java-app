@@ -8,12 +8,12 @@
     - name: Build the Web Application with Maven
       command: mvn clean package
       args:
-        chdir: "./../src/main/java/com/mycompany/app"
+        chdir: ${WORKSPACE}/src/main/java/com/mycompany/app
 
     - name: Copy the Generated .war file to Tomcat Webapps Directory
       copy:
-        src: "./../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war"
-        dest: "/u01/tomcat/webapps/"
+        src: ${WORKSPACE}/src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
+        dest: /u01/tomcat/webapps/
 
     - name: Restart Tomcat
       service:
