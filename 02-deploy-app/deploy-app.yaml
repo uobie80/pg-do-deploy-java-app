@@ -11,13 +11,13 @@
       ansible.builtin.command: mvn clean package
       become: false
       args:
-        chdir: ./src/main/java/com/mycompany/app/
+        chdir: src/main/java/com/mycompany/app/
       when: inventory_hostname == 'localhost'
    
     - name: Copy the Generated .war file to Tomcat Webapps Directory
       become: false
       copy:
-        src: ./src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
+        src: src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
       when: inventory_hostname == 'webservers'
 
