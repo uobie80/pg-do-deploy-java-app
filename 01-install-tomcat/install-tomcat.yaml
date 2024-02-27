@@ -46,7 +46,7 @@
       copy:
         src: tomcat.service
         dest: /etc/systemd/system/
-        mode: 755
+        mode: 777
  
     - name: Start and Enable Tomcat 10 on sever
       systemd:
