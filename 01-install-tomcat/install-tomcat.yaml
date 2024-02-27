@@ -23,7 +23,7 @@
         path: /u01/tomcat
         owner: tomcat
         group: tomcat
-        mode: 0777
+        mode: 755
         recurse: yes
  
     - name: Download & Unarchive tomcat10 
@@ -38,7 +38,7 @@
         path: /u01/tomcat
         owner: tomcat
         group: tomcat
-        mode: "u+rwx,g+rwx,o=rwx"
+        mode: "u+rwx,g+rx,o=rx"
         recurse: yes
         state: directory
  
@@ -46,7 +46,7 @@
       copy:
         src: tomcat.service
         dest: /etc/systemd/system/
-        mode: 0777
+        mode: 755
  
     - name: Start and Enable Tomcat 10 on sever
       systemd:
