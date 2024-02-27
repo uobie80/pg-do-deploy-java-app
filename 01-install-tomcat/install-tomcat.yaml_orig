@@ -5,6 +5,14 @@
   become: true
   tasks:
  
+    - name: Create a Tomcat User
+      user:
+        name: tomcat
+ 
+    - name: Create a Tomcat Group
+      group:
+        name: tomcat
+
     - name: Install OpenJDK
       package:
         name: java-11-openjdk
@@ -13,9 +21,9 @@
     - name: Create a Tomcat Directory
       file:
         path: /u01/tomcat
-        owner: root
-        group: root
-        mode: 777
+        owner: tomcat
+        group: tomcat
+        mode: 755
         recurse: yes
  
     - name: Download & Unarchive tomcat10 
@@ -28,9 +36,9 @@
     - name: Change ownership of tomcat directory
       file:
         path: /u01/tomcat
-        owner: root
-        group: root
-        mode: "u+rwx,g+rwx,o=rwx"
+        owner: tomcat
+        group: tomcat
+        mode: "u+rwx,g+rx,o=rx"
         recurse: yes
         state: directory
  
@@ -38,9 +46,10 @@
       copy:
         src: tomcat.service
         dest: /etc/systemd/system/
-        mode: 777
+        mode: 755
  
     - name: Start and Enable Tomcat 10 on sever
+      become_user: tomcat
       systemd:
         name: tomcat
         state: started
