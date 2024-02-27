@@ -20,7 +20,7 @@
 
 
     - name: Restart Tomcat
-      become_user: tomcat
+      become: true
       service:
         name: tomcat
         state: restarted
