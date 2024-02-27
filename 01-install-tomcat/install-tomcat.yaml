@@ -49,7 +49,6 @@
         mode: 777
  
     - name: Start and Enable Tomcat 10 on sever
-      become_user: tomcat
       systemd:
         name: tomcat
         state: started
