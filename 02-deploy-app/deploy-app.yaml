@@ -9,6 +9,7 @@
   tasks:
     - name: Build the Web Application with Maven
       ansible.builtin.command: mvn clean package
+      become: false
       args:
         chdir: ./src/main/java/com/mycompany/app/
       when: inventory_hostname == 'localhost'
