@@ -8,7 +8,7 @@
 
   tasks:
     - name: Build the Web Application with Maven
-      ansible.builtin.command: mvn clean package
+      ansible.builtin.command: /maven/apache-maven-3.9.6/bin/mvn clean package
       become: false
       args:
         chdir: ../src/main/java/com/mycompany/app/
