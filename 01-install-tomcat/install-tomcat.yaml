@@ -41,4 +41,4 @@
         mode: 777
  
     - name: Start and Enable Tomcat 10 on sever
-      ansible.builtin.command: /u01/tomcat/bin/startup.sh
+      ansible.builtin.shell: /u01/tomcat/bin/startup.sh
