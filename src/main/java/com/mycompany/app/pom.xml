@@ -38,14 +38,15 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.0</version>
+	<version>3.3.0</version>
         <configuration>
           <!-- Define the main class (if needed) -->
           <!-- <archive>
             <manifest>
               <mainClass>com.mycompany.app.App</mainClass>
             </manifest>
-          </archive> -->
+	  </archive> -->
+	  <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
 
