@@ -13,12 +13,13 @@
       when: inventory_hostname == 'localhost'
    
     - name: Copy the Generated .war file to Tomcat Webapps Directory
-      become_user: tomcat
+      become: true
       copy:
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
 
-    - name: Restart and Enable Tomcat 10 on server
+    - name: Restart and Enable Tomcat 10 on serveri
+      become: true
       systemd:
         name: tomcat
         state: restarted
