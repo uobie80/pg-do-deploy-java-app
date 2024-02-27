@@ -18,3 +18,7 @@
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
 
+    - name: Restart and Enable Tomcat 10 on server
+      systemd:
+        name: tomcat
+        state: restarted
