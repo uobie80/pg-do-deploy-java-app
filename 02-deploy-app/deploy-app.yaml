@@ -24,7 +24,7 @@
           # name: tomcat
           # state: restarted
 
-     - name: Restart Tomcat
+    - name: Restart Tomcat
        become: true
        service:
          name: tomcat
