@@ -25,8 +25,8 @@
           # state: restarted
 
     - name: Restart Tomcat
-       become: true
-       service:
-         name: tomcat
-         state: restarted
+      become: true
+      service:
+        name: tomcat
+        state: restarted
 
