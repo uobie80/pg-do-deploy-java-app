@@ -4,7 +4,7 @@
     - webservers
     - localhost
   remote_user: devops
-  become: true  # Run tasks with sudo (if needed)
+    # become: true  # Run tasks with sudo (if needed)
 
   tasks:
     - name: Build the Web Application with Maven
@@ -15,12 +15,14 @@
       when: inventory_hostname == 'localhost'
    
     - name: Copy the Generated .war file to Tomcat Webapps Directory
+      become: false
       copy:
         src: ./src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
       when: inventory_hostname == 'webservers'
 
     - name: Restart Tomcat
+      become: true
       service:
         name: tomcat
         state: restarted
