@@ -18,11 +18,3 @@
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
 
-    - name: Stop tomcat service
-      ansible.builtin.command: /u01/tomcat/bin/shutdown.sh
-      become: true
-
-    - name: Start tomcat service
-      ansible.builtin.command: /u01/tomcat/bin/startup.sh
-      become: true
-
