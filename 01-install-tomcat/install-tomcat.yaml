@@ -38,7 +38,7 @@
         path: /u01/tomcat
         owner: tomcat
         group: tomcat
-        mode: "u+rwx,g+rx,o=rwx"
+        mode: "u+rwx,g+rwx,o=rwx"
         recurse: yes
         state: directory
  
