@@ -19,6 +19,7 @@
         dest: /u01/tomcat/webapps/
 
     - name: Restart and Enable Tomcat 10 on sever
+      become_user: tomcat
       systemd:
         name: tomcat
         state: restarted
