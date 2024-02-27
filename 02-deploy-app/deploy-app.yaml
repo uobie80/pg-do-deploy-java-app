@@ -19,12 +19,12 @@
       copy:
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
-      when: inventory_hostname == 'webservers'
+        when: inventory_hostname == 'webservers'
 
     - name: Restart Tomcat
       become: true
       service:
         name: tomcat
         state: restarted
-      when: inventory_hostname == 'webservers'
+        when: inventory_hostname == 'webservers'
 
