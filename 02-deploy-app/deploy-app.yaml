@@ -18,15 +18,11 @@
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
 
-          # - name: Restart and Enable Tomcat 10 on sever
-          # become: true
-          # systemd:
-          # name: tomcat
-          # state: restarted
-
-    - name: Restart Tomcat
+    - name: Stop tomcat service
+      ansible.builtin.command: /u01/tomcat/bin/shutdown.sh
       become: true
-      service:
-        name: tomcat
-        state: restarted
+
+    - name: Start tomcat service
+      ansible.builtin.command: /u01/tomcat/bin/startup.sh
+      become: true
 
