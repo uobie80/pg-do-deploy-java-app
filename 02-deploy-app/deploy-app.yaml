@@ -13,7 +13,7 @@
       when: inventory_hostname == 'localhost'
    
     - name: Copy the Generated .war file to Tomcat Webapps Directory
-      become: false
+      become_user: tomcat
       copy:
         src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
         dest: /u01/tomcat/webapps/
