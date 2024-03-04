@@ -39,6 +39,12 @@
         name: docker-ce
         state: latest
 
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
     - name: Install Maven
       package:
         name: maven
