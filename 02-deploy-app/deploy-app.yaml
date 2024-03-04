@@ -9,27 +9,27 @@
     - name: Clone a github repository
      git:
        repo: https://github.com/uobie80/pg-do-deploy-java-app.git
-       dest: /tmp/course3-proj/myapp-repo
+       dest: /tmp/myapp-repo
        clone: yes
 
     - name: Build the Web Application with Maven
       ansible.builtin.command: mvn clean package
       args:
-        chdir: /tmp/course3-proj/myapp-repo
+        chdir: /tmp/myapp-repo
    
-    - name: Copy the Generated .war file to Tomcat Webapps Directory
+    - name: Copy the Generated .war file to root directory of cloned repository
       copy:
-        src: /tmp/course3-proj/myapp-repo/target/my-app-1.0-SNAPSHOT.war
-        dest: /tmp/course3-proj/myapp-repo/
+        src: /tmp/myapp-repo/target/my-app-1.0-SNAPSHOT.war
+        dest: /tmp/myapp-repo/
         remote_src: yes
 
     - name: Build docker file
       ansible.builtin.command: docker build -t myapp-image:myapp01 .
       args:
-        chdir: /tmp/course3-proj/myapp-repo/
+        chdir: /tmp/myapp-repo
 
     - name: Deploy and run the image of application on tomcat container
       ansible.builtin.command: docker run -d -P myimage:ansiblenew
       args:
-        chdir: /tmp/course3-proj/myapp-repo/
+        chdir: /tmp/myapp-repo
 
