@@ -5,21 +5,31 @@
   become: true  # Run tasks with sudo (if needed)
 
   tasks:
+
+    - name: Clone a github repository
+     git:
+       repo: https://github.com/uobie80/pg-do-deploy-java-app.git
+       dest: /tmp/course3-proj/myapp-repo
+       clone: yes
+
     - name: Build the Web Application with Maven
-      ansible.builtin.command: /maven/apache-maven-3.9.6/bin/mvn clean package
-      become: false
+      ansible.builtin.command: mvn clean package
       args:
-        chdir: ../src/main/java/com/mycompany/app/
-      when: inventory_hostname == 'localhost'
+        chdir: /tmp/course3-proj/myapp-repo
    
     - name: Copy the Generated .war file to Tomcat Webapps Directory
-      become: true
       copy:
-        src: ../src/main/java/com/mycompany/app/target/my-app-1.0-SNAPSHOT.war
-        dest: /u01/tomcat/webapps/
+        src: /tmp/course3-proj/myapp-repo/target/my-app-1.0-SNAPSHOT.war
+        dest: /tmp/course3-proj/myapp-repo/
+        remote_src: yes
 
-    - name: Restart and Enable Tomcat 10 on serveri
-      become: true
-      systemd:
-        name: tomcat
-        state: restarted
+    - name: Build docker file
+      ansible.builtin.command: docker build -t myapp-image:myapp01 .
+      args:
+        chdir: /tmp/course3-proj/myapp-repo/
+
+    - name: Deploy and run the image of application on tomcat container
+      ansible.builtin.command: docker run -d -P myimage:ansiblenew
+      args:
+        chdir: /tmp/course3-proj/myapp-repo/
+
