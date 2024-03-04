@@ -53,6 +53,3 @@
       ansible.builtin.command: tar -zxvf apache-maven-3.9.6-bin.tar.gz -C /opt 
       args:
         chdir: /tmp
-      
-    - name: Add maven to PATH
-      ansible.builtin.shell: export PATH=/opt/apache-maven-3.9.6/bin:$PATH
