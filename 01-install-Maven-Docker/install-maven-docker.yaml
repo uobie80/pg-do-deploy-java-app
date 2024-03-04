@@ -51,6 +51,7 @@
 
     - name: Untar Maven 
       ansible.builtin.command: tar -zxvf apache-maven-3.9.6-bin.tar.gz -C /opt 
+      args:
         chdir: /tmp 
         creates: /opt/apache-maven-3.9.6
       
