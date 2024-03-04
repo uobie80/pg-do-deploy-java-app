@@ -1,8 +1,8 @@
-# Automated Deployment with Jenkins, Ansible, and Maven
+# Automated Deployment with Jenkins, Ansible, Docker, and Maven
 
 ## Summary
 
-This program automates the deployment process for a Java application on Tomcat 10 using Jenkins, Ansible, and Maven. The goal is to streamline the deployment of WAR files to Tomcat web containers on remote servers.
+This program automates the deployment process for a Java application on Tomcat 9 web container using Jenkins, Ansible, Dokcer, and Maven. The goal is to streamline the deployment of WAR files to Tomcat web containers on remote servers.
 
 ## User Story
 
@@ -36,11 +36,11 @@ The focus is on integrating Ansible with the Jenkins CI server, enabling XYZ Ltd
 
 1. **Jenkins Integration:**
    - Configure Jenkins to integrate with Ansible.
-   - Set up Jenkins jobs to trigger Ansible playbooks for deployment.
+   - Set up Jenkins jobs to trigger Ansible playbooks for installation and deployment of Docker, Maven on worker nodes.
 
 2. **Ansible Playbooks:**
    - Customize Ansible playbooks according to your application's deployment requirements.
-   - Ensure proper configuration for deploying to Tomcat 10.
+   - Ensure proper configuration Dockerfile for deploying war file to Tomcat 9.
 
 3. **Run Jenkins Jobs:**
    - Execute Jenkins jobs to deploy custom WAR files to the web container.
