@@ -43,12 +43,16 @@
       package:
         name: maven
         state: latest
+    
+    - name: Download Apache Maven 3.9.6
+      ansible.builtin.get_url:
+        url: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+        dest: /tmp/apache-maven-3.9.6-bin.tar.gz
 
-    - name: Download and unarchive maven file
-      ansible.builtin.unarchive:
-        src: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-        dest: /opt/apache-maven-3.9.6
-        remote_src: yes
-
+    - name: Untar Maven 
+      ansible.builtin.command: tar -zxvf apache-maven-3.9.6-bin.tar.gz -C /opt 
+        chdir: /tmp 
+        creates: /opt/apache-maven-3.9.6
+      
     - name: Add maven to PATH
       ansible.builtin.command: export PATH=/opt/apache-maven-3.9.6/bin:$PATH
