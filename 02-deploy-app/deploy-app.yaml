@@ -13,7 +13,7 @@
         clone: yes
 
     - name: Build the Web Application with Maven
-      ansible.builtin.command: mvn clean package
+      ansible.builtin.command: /opt/apache-maven-3.9.6/bin/mvn clean package
       args:
         chdir: /tmp/myapp-repo
    
