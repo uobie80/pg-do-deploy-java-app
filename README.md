@@ -2,7 +2,7 @@
 
 ## Summary
 
-This program automates the deployment process for a Java application on Tomcat 9 web container using Jenkins, Ansible, Dokcer, and Maven. The goal is to streamline the deployment of WAR files to Tomcat web containers on remote servers.
+This program automates the deployment process for a Java application on Tomcat 9 web container using Jenkins, Ansible, Docker, and Maven. The goal is to streamline the deployment of WAR files to Tomcat web containers on remote servers.
 
 ## User Story
 
