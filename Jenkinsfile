@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Tomcat') {
+        stage('Install Maven & Docker') {
             steps {
                 script {
                     ansiblePlaybook(
-                        playbook: './01-install-tomcat/install-tomcat.yaml'
+                        playbook: './01-install-Maven-Docker/install-maven-docker.yaml'
                     )
                 }
             }
