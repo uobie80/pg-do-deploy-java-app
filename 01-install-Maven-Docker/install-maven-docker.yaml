@@ -47,7 +47,8 @@
     - name: Download and unarchive maven file
       ansible.builtin.unarchive:
         src: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-        dest: /opt/
+        dest: /opt/apache-maven-3.9.6
+        remote_src: yes
 
     - name: Add maven to PATH
       ansible.builtin.command: export PATH=/opt/apache-maven-3.9.6/bin:$PATH
