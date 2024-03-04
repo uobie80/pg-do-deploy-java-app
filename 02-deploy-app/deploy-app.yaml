@@ -7,10 +7,10 @@
   tasks:
 
     - name: Clone a github repository
-     git:
-       repo: https://github.com/uobie80/pg-do-deploy-java-app.git
-       dest: /tmp/myapp-repo
-       clone: yes
+      git:
+        repo: https://github.com/uobie80/pg-do-deploy-java-app.git
+        dest: /tmp/myapp-repo
+        clone: yes
 
     - name: Build the Web Application with Maven
       ansible.builtin.command: mvn clean package
