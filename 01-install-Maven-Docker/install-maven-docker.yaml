@@ -1,0 +1,52 @@
+---
+- name: Install Maven and Docker using ansible
+  hosts: webservers
+  remote_user: devops
+  become: true
+  tasks:
+
+    - name: Install OpenJDK
+      package:
+        name: java-11-openjdk
+        state: present
+       
+    - name: Install yum utils
+      yum:
+        name: yum-utils
+        state: latest
+
+    - name: Download Docker Repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docer-ce.repo
+
+    - name: Enable Docker Edge Repo
+      ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: 'docker-ce-edge'
+        option: enabled
+        value: 0
+
+    - name: Enable Docker Test Repo
+      ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: 'docker-ce-test'
+        option: enabled
+        value: 0
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: latest
+
+    - name: Install Maven
+      package:
+        name: maven
+        state: latest
+
+          # - name: Unarchive a file that needs to be downloaded (added in 2.0)
+          #   ansible.builtin.unarchive:
+          # src: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+          #  dest: /etc/yum.repos.d/
+          # remote_src: yes
+
