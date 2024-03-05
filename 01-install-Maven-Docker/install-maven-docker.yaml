@@ -20,10 +20,10 @@
         url: https://download.docker.com/linux/centos/docker-ce.repo
         dest: /etc/yum.repos.d/docer-ce.repo
 
-    - name: Enable Docker Edge Repo
+    - name: Enable Docker Stable Source Repo
       ini_file:
         dest: /etc/yum.repos.d/docer-ce.repo
-        section: 'docker-ce-edge'
+        section: 'docker-ce-stable-source'
         option: enabled
         value: 0
 
@@ -50,7 +50,7 @@
         name: maven
         state: latest
     
-    - name: Download Apache Maven 3.9.6
+    - name: Download Apache Maven 3.9.6 (for java applications that require maven 3.8.6 or higher)
       ansible.builtin.get_url:
         url: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
         dest: /tmp/apache-maven-3.9.6-bin.tar.gz
